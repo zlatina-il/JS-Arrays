@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Max Sequence Of Equal Elements</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter array's elements, separated by " ,"</span>
+    <input type="text" id="input" />
+    <br />
+	<a href="#" id="btn-check" onclick="MaxSequenceOfEqualElements()">click!</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    function MaxSequenceOfEqualElements()
+	    {
+	        var tmp = jsConsole.readString("#input");
+	        var nums = tmp.split(',');
+	        var i = 0;
+	        var currentCount = 0;
+	        var lastCount = 0;
+	        var startIndex = null;
+	        for (i = 1; i < nums.length; i++)
+	        {
+	            if (nums[i] === nums[i - 1]) 
+	            {
+	                currentCount++;
+	                if (currentCount > lastCount)
+	                {
+	                    lastCount = currentCount;
+	                    startIndex = i - currentCount;
+	                }
+	            }
+	            else
+	            {
+	                currentCount = 0;
+	            }
+	        }
+	        if (startIndex !== null)
+	        {
+	            jsConsole.writeLine("The maximal sequence of equal elements in an array is ");
+	            for (i = parseInt(startIndex) ; i <= parseInt(startIndex) + parseInt(lastCount) ; i++)
+	            {
+	                jsConsole.write(nums[i]+ " ");
+	            }
+	            jsConsole.writeLine();
+	        }
+	        else
+	        {
+	            jsConsole.writeLine("No equals!");
+	        }
+	    }
+	</script>
+</body>
+</html>

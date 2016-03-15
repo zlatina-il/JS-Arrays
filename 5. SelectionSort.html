@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Selection Sort </title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter array's elements, separated by " ,"</span>
+    <input type="text" id="input" />
+    <br />
+	<a href="#" id="btn-check" onclick="SelectionSort()">click!</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		function SelectionSort() {
+		    var tmp = jsConsole.readString("#input");
+		    var numbers = tmp.split(',');
+		    var i;
+		    var j;
+		    var temp;
+			var iMin = null;
+
+			for (i = 0; i < numbers.length-1; i++)
+			{
+				iMin = i;
+				for (j = i + 1; j < numbers.length; j++)
+				{
+					if (parseInt(numbers[j]) < parseInt(numbers[iMin])) iMin = j;
+				}
+				if (iMin != i)
+				{
+					temp = numbers[i];
+					numbers[i] = numbers[parseInt(iMin)];
+					numbers[parseInt(iMin)] = temp;
+				}
+			}
+			jsConsole.writeLine("Sorted: ");
+			for (i = 0; i < numbers.length; i++)
+			    {
+			        jsConsole.writeLine(numbers[i]);
+			    }
+			}
+	</script>
+</body>
+</html>

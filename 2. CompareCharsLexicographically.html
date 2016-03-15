@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Compare Char Arrays Lexicographically</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter first array's elements, separated by " ,"</span>
+    <input type="text" id="arrayOne" />
+    <br />
+    <span>Enter second array's elements, separated by " ,"</span>
+	<input type="text" id="arrayTwo" />
+	<a href="#" id="btn-check-prime" onclick="CompareTheArrays()">Compare!</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    function CompareTheArrays()
+	    {
+	        var arr1 = jsConsole.("#arrayOne");
+	        var arr2 = jsConsole.readString("#arrayTwo");
+
+	        var firstArray = arr1.split(',');
+	        var secondArray = arr2.split(',');
+	        var arraysLenght = 0;
+	        for (var i in firstArray)
+	        {
+	            arraysLenght++;
+	        }
+
+	        for (var i = 0; i < arraysLenght; i++)
+	        {
+	            if (firstArray[i] > secondArray[i])
+	            {
+
+	                jsConsole.writeLine(firstArray[i] + " is after " + secondArray[i] + " lexicographyclly!");
+	            }
+	            else
+	            {
+	                jsConsole.writeLine(firstArray[i] + " is before " + secondArray[i] + " lexicographyclly!");
+	            }
+	        }
+	    }
+	</script>
+</body>
+</html>

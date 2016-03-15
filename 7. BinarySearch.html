@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Index of element of array</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+<form name="sForm" action="#" method="GET">
+Sequence (separated by ,): <input type="text" name="seq">&nbsp;Search number: <input type="text" name="ns"><a href="#" id="btn-check" onclick=javascript:IBinarySearch(document.sForm.seq.value,document.sForm.ns.value)>click!</a></form>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+
+	<script>
+	function Binary_Search(A, key, imin, imax)
+			{
+				while (imin < imax)
+				{
+					var imid = (parseInt(imin) + parseInt(imax)) >> 1;
+					if (A[imid] < key)
+						imin = imid + 1;
+					else
+						imax = imid;
+				}
+				if ((imax === imin) && (A[imin] === key))
+					return imin;
+				else
+					return -1; 
+			}
+
+	    function IBinarySearch(sequence, E)
+	    {
+			var sortedNums = sequence.split(',');
+			for (var i = 0; i < sortedNums.length; i++)
+			{
+				sortedNums[i] = sortedNums[i].trim();
+			}
+	
+			sortedNums.sort();
+			document.sForm.seq.value = sortedNums;
+			jsConsole.writeLine("Sorted: ");
+			jsConsole.writeLine(sortedNums.join());
+
+			var index = Binary_Search(sortedNums, E, parseInt(0), parseInt(sortedNums.length-1));
+			if (index >= 0)
+			{
+				jsConsole.writeLine(E + " was found on position with index " + index);
+			}
+			else jsConsole.writeLine("No occurrances of " + E + " were met");
+
+			jsConsole.writeLine();
+			
+			}
+
+			
+	</script>
+</body>
+</html>

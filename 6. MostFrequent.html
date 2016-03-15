@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Most Frequent Number</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter array's elements, separated by " ,"</span>
+    <input type="text" id="input" />
+    <br />
+	<a href="#" id="btn-check" onclick="MostFrequentNumber()">click!</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		function MostFrequentNumber() {
+		    var tmp = jsConsole.readString("#input");
+		    var nums = tmp.split(',');
+			for (var i = 0; i < nums.length; i++)
+			{
+				nums[i] = nums[i].trim();
+			}
+			var mostFrequent = 0;
+			var mostFrequent_I = 0;
+			var temp = 0;
+			for (var i = 0; i < nums.length-1; i++)
+			{
+				mostFrequent = 0;
+				for (var j = i+1; j < nums.length; j++)
+				{
+					if (nums[j] === nums[i])
+					{
+						mostFrequent++;
+					}
+				}
+				if (mostFrequent > temp)
+				{
+					temp = mostFrequent;
+					mostFrequent_I = nums[i];
+				}
+
+				if (temp > nums.length / 2)
+				{
+					break;
+				}
+			   
+			}
+			jsConsole.writeLine("Most frequent: " +  mostFrequent_I + " (" + parseInt(temp+1)+" times)");
+			
+		}
+        </script>
+	</body>
+</html>
